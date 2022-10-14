@@ -1,3 +1,4 @@
+/* Animation for logo */
 @keyframes mymove {
     from {width: 25px;
     opacity: 0;}
@@ -7,13 +8,14 @@
 #logo{
     animation: mymove;
     animation-duration: 5s;
-    animation-iteration-count: 1;
+    animation-iteration-count: 1; /* Animation iteration count is set to 1 to occur only on loading of the site */
     width: 475px;
 }
 body{
     font-family: 'Poppins', serif;
     background: url("../images/concrete_seamless.png"), #f1f1f1;
 }
+/* All headers are set to flex */
 header{
     display: flex;
     flex-direction: column;
@@ -23,9 +25,11 @@ header{
     display: flex;
     flex-direction: column;
 }
+/* Set links to same color even if they have been visited */
 a:link, a:visited {
     color: blue;
 }
+/* Set styling for card headers */
 .card > header{
     background-color: #288088;
     border: 2px solid #45ADAD;
@@ -33,6 +37,7 @@ a:link, a:visited {
     border-top-right-radius: 50px;
     padding: 20px, 0px;
 }
+/* Pricing contains the card elements, so .pricing is set to flex in order to arrange the cards */
 .pricing{
     display: flex;
     flex-direction: row;
@@ -43,47 +48,52 @@ a:link, a:visited {
 .card{
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
-    flex-basis: 450px;
+    flex-basis: 450px; /* Flex basis defines the size for flex elements */
 } 
-.gallery img{
-    border: 10px solid #50C7C7;
-    margin: 10px;
-    width: 300px;
-}
+/* The .gallery class contains the gallery images, so .gallery is set to flex to arrange the gallery image elements */
 .gallery{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
+.gallery img{
+    border: 10px solid #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
 
+/* Stylings for screens greater than 900px */
 @media (min-width: 900px){
+    /* Sticky positioning makes the body header stick to the top when scrolling  */
     body>header{
-        position: -webkit-sticky; /* Safari */
+        position: -webkit-sticky; /* For Safari */
         position: sticky;
         top: 0;
     } 
+    /* Change headers from columns to rows for desktop view so that the logo and nav links are arranged next to each other */
     header{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
     }
+    /* Nav links are set to flex-direction row so that they appear next to each other */
     .nav_links{
         display: flex;
         flex-direction: row;
         align-items: center;
     }
+    /* Pricing is set to flex-direction row so that card elements appear next to each other */
     .pricing{
         display: flex;
         flex-direction: row;
     }
     .card{
-        display: flex;
-        flex-direction: column;
         flex-basis: 275px;
     }
 }
 
+/* Stylings for print view */
 @media print {
     body{
         font-family: Arial, Helvetica;
@@ -95,7 +105,7 @@ a:link, a:visited {
         align-items: center;
     }
     nav{
-        width: 100%;
+        width: 100%; /* Width of container set to 100% in order for nav links to take up full width in print view */
     }
     .nav_links{
         display: flex;
@@ -106,21 +116,22 @@ a:link, a:visited {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        align-items: flex-end;
+        align-items: flex-end; /* align items to bottom of the print page */
     }
     .card{
         border: solid 2px #45addd;
         flex-basis: 325px;
     }
     #gallery, .gallery{
-        display: none;
+        display: none; /* hide gallery in print view */
     }
     .card ul li:nth-child(2)::after{
-        content: "\1F44D";
+        content: "\1F44D"; /* add thumbs up emoji to the end of the proper lines in print view */
     }
 
 }
 
+/* setting animation iteration count to 0 disables logo animation for those who prefer reduced motion */
 @media (prefers-reduced-motion) {
     #logo{
         animation-iteration-count: 0;
